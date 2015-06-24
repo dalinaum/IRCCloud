@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "productName": "Irccloud",
+  "version": "0.1.0",
+  "author": {
+    "name": "LYK",
+    "email": "dalinaum@gmail.com" 
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "rm -rf build; mkdir -p build; electron-packager . $npm_package_productName --platform=darwin --arch=x64 --version=0.28.3 --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git"
+  },
+  "devDependencies": {
+    "electron-packager": "^4.1.3",
+    "electron-prebuilt": "^0.28.3"
+  }
+}
