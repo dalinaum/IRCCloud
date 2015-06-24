@@ -6,12 +6,12 @@ require('crash-reporter').start();
 var mainWindow = null;
 
 app.on('window-all-closed', function () {
-  //if (process.platform != 'darwin') {
+  if (process.platform != 'darwin') {
     app.quit();
-  //}
+  }
 });
 
-app.on('ready', function () {
+function openMainWindow() {
   mainWindow = new BrowserWindow({width: 920, height:700});
   mainWindow.loadUrl('https://www.irccloud.com');
 
@@ -23,4 +23,12 @@ app.on('ready', function () {
     event.preventDefault();
     require('shell').openExternal(url);
   });
+}
+
+app.on('activate-with-no-open-windows', function () {
+  openMainWindow();
+});
+
+app.on('ready', function () {
+  openMainWindow();
 });
