@@ -1,2 +1,3 @@
-# irccloud
-Mac App: An Electron wrapper for irccloud.
+# IRCCloud
+
+Mac App for IRCCloud. (An Electron wrapper for IRCCloud.)

@@ -14,8 +14,13 @@ app.on('window-all-closed', function () {
 app.on('ready', function () {
   mainWindow = new BrowserWindow({width: 920, height:700});
   mainWindow.loadUrl('https://www.irccloud.com');
-  // mainWindow.openDevTools();
+
   mainWindow.on('closed', function () {
     mainWindow = null;
+  });
+
+  mainWindow.on('will-navigate', function (event, url) {
+    event.preventDefault();
+    require('shell').openExternal(url);
   });
 });
