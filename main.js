@@ -47,7 +47,9 @@ app.once('ready', function() {
           {
             label: 'Quit',
             accelerator: 'Command+Q',
-            click: function() { app.quit(); }
+            click: function() {
+              app.quit();
+            }
           },
         ]
       },
@@ -97,8 +99,9 @@ app.once('ready', function() {
             accelerator: 'Command+R',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.reload();
+              }
             }
           },
           {
@@ -106,8 +109,9 @@ app.once('ready', function() {
             accelerator: 'Ctrl+Command+F',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+              }
             }
           },
           {
@@ -115,8 +119,9 @@ app.once('ready', function() {
             accelerator: 'Alt+Command+I',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.toggleDevTools();
+              }
             }
           },
         ]
@@ -175,8 +180,9 @@ app.once('ready', function() {
             accelerator: 'Ctrl+W',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.close();
+              }
             }
           },
         ]
@@ -189,8 +195,9 @@ app.once('ready', function() {
             accelerator: 'Ctrl+R',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.reload();
+              }
             }
           },
           {
@@ -198,8 +205,9 @@ app.once('ready', function() {
             accelerator: 'F11',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+              }
             }
           },
           {
@@ -207,8 +215,9 @@ app.once('ready', function() {
             accelerator: 'Alt+Ctrl+I',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
-              if (focusedWindow)
+              if (focusedWindow) {
                 focusedWindow.toggleDevTools();
+              }
             }
           },
         ]
