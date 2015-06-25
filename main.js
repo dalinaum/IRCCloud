@@ -1,11 +1,11 @@
-var app = require('app')
+var App = require('app')
 var BrowserWindow = require('browser-window');
 var Menu = require('menu');
 var Shell = require('shell');
 
 require('crash-reporter').start();
 
-app.once('ready', function() {
+App.once('ready', function() {
   var template;
   if (process.platform == 'darwin') {
     template = [
@@ -47,7 +47,7 @@ app.once('ready', function() {
             label: 'Quit',
             accelerator: 'Command+Q',
             click: function() {
-              app.quit();
+              App.quit();
             }
           },
         ]
@@ -247,9 +247,9 @@ app.once('ready', function() {
 
 var mainWindow = null;
 
-app.on('window-all-closed', function () {
+App.on('window-all-closed', function () {
   if (process.platform != 'darwin') {
-    app.quit();
+    App.quit();
   }
 });
 
@@ -273,10 +273,10 @@ function openMainWindow() {
   });
 }
 
-app.on('activate-with-no-open-windows', function () {
+App.on('activate-with-no-open-windows', function () {
   openMainWindow();
 });
 
-app.on('ready', function () {
+App.on('ready', function () {
   openMainWindow();
 });
