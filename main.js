@@ -2,6 +2,7 @@ var app = require('app')
 var BrowserWindow = require('browser-window');
 var GlobalShortcut = require('global-shortcut');
 var Menu = require('menu');
+var Shell = require('shell');
 
 require('crash-reporter').start();
 
@@ -147,11 +148,15 @@ app.once('ready', function() {
         submenu: [
           {
             label: 'Learn More',
-            click: function() { require('shell').openExternal('https://github.com/dalinaum/IRCCloud') }
+            click: function() {
+              Shell.openExternal('https://github.com/dalinaum/IRCCloud');
+            }
           },
           {
             label: 'Search Issues',
-            click: function() { require('shell').openExternal('https://github.com/dalinaum/IRCCloud/issues') }
+            click: function() {
+              Shell.openExternal('https://github.com/dalinaum/IRCCloud/issues');
+            }
           }
         ]
       }
@@ -213,11 +218,15 @@ app.once('ready', function() {
         submenu: [
           {
             label: 'Learn More',
-            click: function() { require('shell').openExternal('https://github.com/dalinaum/IRCCloud') }
+            click: function() {
+              Shell.openExternal('https://github.com/dalinaum/IRCCloud')
+            }
           },
           {
             label: 'Search Issues',
-            click: function() { require('shell').openExternal('https://github.com/dalinaum/IRCCloud/issues') }
+            click: function() {
+              Shell.openExternal('https://github.com/dalinaum/IRCCloud/issues')
+            }
           }
         ]
       }
@@ -246,7 +255,7 @@ function openMainWindow() {
 
   mainWindow.on('will-navigate', function (event, url) {
     event.preventDefault();
-    require('shell').openExternal(url);
+    Shell.openExternal(url);
   });
 }
 
