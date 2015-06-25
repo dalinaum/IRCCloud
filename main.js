@@ -1,6 +1,5 @@
 var app = require('app')
 var BrowserWindow = require('browser-window');
-var GlobalShortcut = require('global-shortcut');
 var Menu = require('menu');
 var Shell = require('shell');
 
