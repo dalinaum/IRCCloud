@@ -262,6 +262,12 @@ function openMainWindow() {
     mainWindow = null;
   });
 
+  mainWindow.webContents.on('new-window',
+    function (event, url, frameName, disposition) {
+      event.preventDefault();
+      Shell.openExternal(url);
+    });
+
   mainWindow.on('will-navigate', function (event, url) {
     event.preventDefault();
     Shell.openExternal(url);
