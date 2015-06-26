@@ -1,3 +1,7 @@
+# v0.7
+
+ * Apply an app icon.
+
 # v0.6
 
  * Open links on the default web browser.
