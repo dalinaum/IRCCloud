@@ -289,13 +289,13 @@ App.once('ready', function() {
           {
             label: 'Learn More',
             click: function() {
-              Shell.openExternal('https://github.com/dalinaum/IRCCloud')
+              Shell.openExternal('https://github.com/dalinaum/IRCCloud');
             }
           },
           {
             label: 'Search Issues',
             click: function() {
-              Shell.openExternal('https://github.com/dalinaum/IRCCloud/issues')
+              Shell.openExternal('https://github.com/dalinaum/IRCCloud/issues');
             }
           }
         ]
