@@ -104,6 +104,26 @@ App.once('ready', function() {
             }
           },
           {
+            label: 'Zoom In',
+            accelerator: 'Command+=',
+            click: function() {
+              var focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow && focusedWindow.webContents) {
+                focusedWindow.webContents.executeJavaScript('_zoomIn()');
+              }
+            }
+          },
+            {
+              label: 'Zoom Out',
+              accelerator: 'Command+-',
+              click: function() {
+                var focusedWindow = BrowserWindow.getFocusedWindow();
+                if (focusedWindow && focusedWindow.webContents) {
+                  focusedWindow.webContents.executeJavaScript('_zoomOut()');
+                }
+              }
+            },
+          {
             label: 'Toggle Full Screen',
             accelerator: 'Ctrl+Command+F',
             click: function() {
@@ -254,7 +274,7 @@ App.on('window-all-closed', function () {
 });
 
 function openMainWindow() {
-  mainWindow = new BrowserWindow({width: 920, height:700});
+  mainWindow = new BrowserWindow({width: 920, height:700, preload: __dirname + '/webframe.js'});
   mainWindow.loadUrl('https://www.irccloud.com');
 
   mainWindow.on('closed', function () {
