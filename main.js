@@ -1,4 +1,4 @@
-var App = require('app')
+var App = require('app');
 var BrowserWindow = require('browser-window');
 var Menu = require('menu');
 var Shell = require('shell');
