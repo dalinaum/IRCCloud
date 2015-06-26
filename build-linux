@@ -1,0 +1,7 @@
+#!/bin/sh
+rm -rf build
+mkdir -p build
+./node_modules/electron-packager/cli.js . $1 --platform=linux --arch=x64 --version=0.28.3 --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git --ignore=resources --ignore=dist --app-version=$2
+cd build
+tar cvzf $1-linux-$2.tar.gz *
+mv *.tar.gz ../dist
