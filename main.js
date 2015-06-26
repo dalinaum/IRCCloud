@@ -113,16 +113,27 @@ App.once('ready', function() {
               }
             }
           },
-            {
-              label: 'Zoom Out',
-              accelerator: 'Command+-',
-              click: function() {
-                var focusedWindow = BrowserWindow.getFocusedWindow();
-                if (focusedWindow && focusedWindow.webContents) {
-                  focusedWindow.webContents.executeJavaScript('_zoomOut()');
-                }
+          {
+            label: 'Zoom Out',
+            accelerator: 'Command+-',
+            click: function() {
+              var focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow && focusedWindow.webContents) {
+                focusedWindow.webContents.executeJavaScript('_zoomOut()');
               }
-            },
+            }
+          },
+          {
+            label: 'Actual Size',
+            accelerator: 'Command+0',
+            click: function() {
+              var focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow && focusedWindow.webContents) {
+                focusedWindow.webContents.executeJavaScript(
+                  '_zoomActualSize()');
+              }
+            }
+          },
           {
             label: 'Toggle Full Screen',
             accelerator: 'Ctrl+Command+F',
@@ -220,6 +231,37 @@ App.once('ready', function() {
             }
           },
           {
+            label: 'Zoom In',
+            accelerator: 'Ctrl+=',
+            click: function() {
+              var focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow && focusedWindow.webContents) {
+                focusedWindow.webContents.executeJavaScript('_zoomIn()');
+              }
+            }
+          },
+          {
+            label: 'Zoom Out',
+            accelerator: 'Ctrl+-',
+            click: function() {
+              var focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow && focusedWindow.webContents) {
+                focusedWindow.webContents.executeJavaScript('_zoomOut()');
+              }
+            }
+          },
+          {
+            label: 'Actual Size',
+            accelerator: 'Ctrl+0',
+            click: function() {
+              var focusedWindow = BrowserWindow.getFocusedWindow();
+              if (focusedWindow && focusedWindow.webContents) {
+                focusedWindow.webContents.executeJavaScript(
+                  '_zoomActualSize()');
+              }
+            }
+          },
+          {
             label: 'Toggle &Full Screen',
             accelerator: 'F11',
             click: function() {
@@ -274,7 +316,12 @@ App.on('window-all-closed', function () {
 });
 
 function openMainWindow() {
-  mainWindow = new BrowserWindow({width: 920, height:700, preload: __dirname + '/webframe.js'});
+  mainWindow = new BrowserWindow({
+    width: 920,
+    height:700,
+    preload: __dirname + '/webframe.js'
+  });
+
   mainWindow.loadUrl('https://www.irccloud.com');
 
   mainWindow.on('closed', function () {
