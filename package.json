@@ -1,7 +1,7 @@
 {
   "private": true,
   "productName": "IRCCloud",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "author": {
     "name": "LYK",
     "email": "dalinaum@gmail.com"
@@ -9,8 +9,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "./generate_icon; ./build-mac $npm_package_productName",
-    "test": "./generate_icon; ./build-mac $npm_package_productName"
+    "build": "rm -rf dist; mkdir dist; ./generate_icon; ./build-mac $npm_package_productName $npm_package_version",
+    "test": "rm -rf dist; mkdir dist; ./generate_icon; ./build-mac $npm_package_productName $npm_package_version"
   },
   "devDependencies": {
     "electron-packager": "^4.1.3",
