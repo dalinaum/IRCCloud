@@ -1,6 +1,6 @@
 # IRCCloud
 
-Mac App for IRCCloud. (An Electron wrapper for IRCCloud.)
+Mac App, Win App and Linux app for IRCCloud. (An Electron wrapper for IRCCloud.)
 
 You can download [the latest release version](https://github.com/dalinaum/IRCCloud/releases/tag/v0.7).
 
