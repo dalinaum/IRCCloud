@@ -1,3 +1,8 @@
+# 0.8
+
+ * Add a zoom feature.
+ * Support Mac, Win32 and Linux.
+
 # v0.7
 
  * Apply an app icon.
