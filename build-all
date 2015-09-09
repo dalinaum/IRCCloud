@@ -3,6 +3,6 @@
 echo "Darwin..."
 ./build-darwin $1 $2
 echo "Linux..."
-./build-linux $1 $2
+./build-linux.js $1 $2
 echo "Win32-x64..."
 ./build-win32-x64 $1 $2
