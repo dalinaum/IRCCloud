@@ -1,19 +1,29 @@
 {
   "private": true,
-  "productName": "IRCCloud",
+  "name": "IRCCloud",
   "version": "0.8.0",
+  "description": "An unofficial cross-platform IRCCloud app.",
+  "keywords": ["IRCCloud, electron"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dalinaum/IRCCloud.git"
+  },
   "author": {
     "name": "LYK",
     "email": "dalinaum@gmail.com"
   },
   "main": "main.js",
+  "bin" : {
+  "irccloud" : "./start.js"
+  },
   "scripts": {
-    "start": "electron .",
-    "build": "rm -rf dist; mkdir dist; ./build-all $npm_package_productName $npm_package_version",
-    "test": "rm -rf dist; mkdir dist; ./build-all $npm_package_productName $npm_package_version"
+    "start": "./start.js",
+    "build": "rm -rf dist; mkdir dist; ./build-all $npm_package_name $npm_package_version",
+    "test": "rm -rf dist; mkdir dist; ./build-all $npm_package_name $npm_package_version"
   },
   "devDependencies": {
     "electron-packager": "^4.1.3",
-    "electron-prebuilt": "^0.28.3"
+    "electron-prebuilt": "^0.28.3",
+    "grunt-electron": "^2.0.0"
   }
 }

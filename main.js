@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var App = require('app');
 var BrowserWindow = require('browser-window');
 var Menu = require('menu');
