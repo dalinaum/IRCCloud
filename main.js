@@ -321,7 +321,8 @@ function openMainWindow() {
   mainWindow = new BrowserWindow({
     width: 920,
     height:700,
-    preload: __dirname + '/webframe.js'
+    preload: __dirname + '/webframe.js',
+    icon: __dirname + 'resources/icon.iconset/icon_512x512.png'
   });
 
   mainWindow.loadUrl('https://www.irccloud.com');
