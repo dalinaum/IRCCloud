@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-var electron = require('electron-prebuilt')
 var proc = require('child_process')
- 
-// will something similar to print /Users/maf/.../Electron 
-console.log(electron)
- 
+
 // spawn electron 
-var child = proc.spawn("electron",["."])
+var child = proc.spawn("electron",[__dirname])
