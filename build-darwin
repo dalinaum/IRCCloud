@@ -1,7 +1,7 @@
 #!/bin/sh
 rm -rf build
 mkdir -p build
-./node_modules/electron-packager/cli.js . $1 --platform=darwin --arch=x64 --version=0.28.3 --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git --ignore=resources --ignore=dist --icon=resources/icon.icns --app-version=$2
+./node_modules/electron-packager/cli.js . $1 --platform=darwin --arch=x64 --version=0.36.2 --out=build --prune --asar=1 --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git --ignore=resources --ignore=dist --icon=resources/icon.icns --app-version=$2
 mkdir -p dist
 rm -rf dist/$1.app
-cp -aR build/$1.app dist
+cp -aR build/*/$1.app dist
