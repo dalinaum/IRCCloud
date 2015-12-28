@@ -8,7 +8,7 @@ var opts = {
   "name": process.argv[2],
   "platform": "linux",
   "arch": "x64",
-  "version": "0.28.3",
+  "version": "0.36.2",
   "out": "build",
   "prune": 1,
   "asar": 1,
