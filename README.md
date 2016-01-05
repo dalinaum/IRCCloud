@@ -2,7 +2,7 @@
 
 Mac App, Win App and Linux app for IRCCloud. (An Electron wrapper for IRCCloud.)
 
-You can download [the latest release version](https://github.com/dalinaum/IRCCloud/releases/tag/v0.8).
+You can download [the latest release version](https://github.com/dalinaum/IRCCloud/releases/tag/v0.9).
 
 [![Build Status](https://travis-ci.org/dalinaum/IRCCloud.svg)](https://travis-ci.org/dalinaum/IRCCloud)
 

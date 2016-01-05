@@ -1,3 +1,7 @@
+# 0.9
+
+ * Update Elctron version 0.36.2
+
 # 0.8
 
  * Add a zoom feature.
