@@ -322,8 +322,8 @@ App.on('window-all-closed', function () {
 
 function openMainWindow() {
   mainWindow = new BrowserWindow({
-    width: 920,
-    height:700,
+    width: conf.get('width') || 920,
+    height: conf.get('height') || 700,
     preload: __dirname + '/webframe.js',
     icon: __dirname + 'resources/icon.iconset/icon_512x512.png',
     title: 'IRCCloud'
@@ -344,6 +344,27 @@ function openMainWindow() {
   mainWindow.on('will-navigate', function (event, url) {
     event.preventDefault();
     Shell.openExternal(url);
+  });
+
+  if (conf.get('maximize')) {
+    mainWindow.maximize();
+  }
+
+  // Handle sizing events so we can persist them.
+  mainWindow.on('maximize', function (event) {
+    conf.set('maximize', true);
+  });
+
+  mainWindow.on('unmaximize', function (event) {
+    conf.set('maximize', false);
+  });
+
+  mainWindow.on('resize', function (event) {
+    var size = this.getSize();
+    conf.set({
+      width: size[0],
+      height: size[1]
+    });
   });
 }
 
