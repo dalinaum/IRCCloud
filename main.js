@@ -277,6 +277,13 @@ App.once('ready', function() {
             }
           },
           {
+            label: 'Toggle &Menu Bar',
+            accelerator: 'Ctrl+Shift+M',
+            click: function() {
+              App.emit('toggle-menu-bar');
+            }
+          },
+          {
             label: 'Toggle &Developer Tools',
             accelerator: 'Alt+Ctrl+I',
             click: function() {
@@ -320,6 +327,16 @@ App.on('window-all-closed', function () {
   }
 });
 
+function hideMenuBar(window) {
+  window.setAutoHideMenuBar(true);
+  window.setMenuBarVisibility(false);
+}
+
+function showMenuBar(window) {
+  window.setAutoHideMenuBar(false);
+  window.setMenuBarVisibility(true);
+}
+
 function openMainWindow() {
   mainWindow = new BrowserWindow({
     width: 920,
@@ -345,6 +362,10 @@ function openMainWindow() {
     event.preventDefault();
     Shell.openExternal(url);
   });
+
+  if (conf.get('menu-bar') === false) {
+    hideMenuBar(mainWindow);
+  }
 }
 
 App.on('activate-with-no-open-windows', function () {
@@ -353,4 +374,14 @@ App.on('activate-with-no-open-windows', function () {
 
 App.on('ready', function () {
   openMainWindow();
+});
+
+App.on('toggle-menu-bar', function () {
+  if (mainWindow.isMenuBarAutoHide()) {
+    showMenuBar(mainWindow);
+    conf.set('menu-bar', true);
+  } else {
+    hideMenuBar(mainWindow);
+    conf.set('menu-bar', false);
+  }
 });
