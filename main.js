@@ -2,10 +2,13 @@
 
 var App = require('app');
 var BrowserWindow = require('browser-window');
+var ConfigStore = require('configstore');
 var Menu = require('menu');
 var Shell = require('shell');
 
 require('crash-reporter').start();
+
+var conf = new ConfigStore('IRCCloud');
 
 App.once('ready', function() {
   var template;
