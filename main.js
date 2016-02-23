@@ -363,7 +363,6 @@ function openMainWindow() {
     Shell.openExternal(url);
   });
 
-<<<<<<< HEAD
   if (conf.get('maximize')) {
     mainWindow.maximize();
   }
@@ -384,11 +383,10 @@ function openMainWindow() {
       height: size[1]
     });
   });
-=======
+
   if (conf.get('menu-bar') === false) {
     hideMenuBar(mainWindow);
   }
->>>>>>> a626d716672ad740f9900dd13bb7aec742089e1b
 }
 
 App.on('activate-with-no-open-windows', function () {
