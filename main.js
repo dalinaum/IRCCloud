@@ -5,6 +5,7 @@ var BrowserWindow = require('browser-window');
 var ConfigStore = require('configstore');
 var Menu = require('menu');
 var Shell = require('shell');
+var IpcMain = require('electron').ipcMain;
 
 require('crash-reporter').start();
 
@@ -341,12 +342,13 @@ function openMainWindow() {
   mainWindow = new BrowserWindow({
     width: conf.get('width') || 920,
     height: conf.get('height') || 700,
+    webPreferences: { zoomFactor: conf.get('zoom_factor') || 1.0 },
     preload: __dirname + '/webframe.js',
     icon: __dirname + 'resources/icon.iconset/icon_512x512.png',
     title: 'IRCCloud'
   });
 
-  mainWindow.loadUrl('https://www.irccloud.com');
+  mainWindow.loadURL('https://www.irccloud.com');
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -405,4 +407,8 @@ App.on('toggle-menu-bar', function () {
     hideMenuBar(mainWindow);
     conf.set('menu-bar', false);
   }
+});
+
+IpcMain.on('zoom-factor-changed', function (event, zoom) {
+  conf.set({ zoom_factor: zoom });
 });
