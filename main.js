@@ -5,7 +5,7 @@ var BrowserWindow = require('browser-window');
 var ConfigStore = require('configstore');
 var Menu = require('menu');
 var Shell = require('shell');
-var IPC = require('electron').ipcMain;
+var IpcMain = require('electron').ipcMain;
 
 require('crash-reporter').start();
 
@@ -409,6 +409,6 @@ App.on('toggle-menu-bar', function () {
   }
 });
 
-IPC.on('zoom-factor-changed', function(event, zoom) {
+IpcMain.on('zoom-factor-changed', function (event, zoom) {
   conf.set({ zoom_factor: zoom });
 });

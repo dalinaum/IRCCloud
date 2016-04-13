@@ -1,15 +1,14 @@
 var webFrame = require('web-frame');
-var ipc = require("ipc");
+var ipcRenderer = require('electron').ipcRenderer;
 
 (function() {
   var webFrameSetZoomFactor = webFrame.setZoomFactor;
   webFrame.setZoomFactor = function () {
     var oldZoom = webFrame.getZoomFactor();
     var ret = webFrameSetZoomFactor.apply(this, arguments);
-
-    if (oldZoom != webFrame.getZoomFactor())
-      ipc.send("zoom-factor-changed", webFrame.getZoomFactor());
-
+    if (oldZoom != webFrame.getZoomFactor()) {
+      ipcRenderer.send('zoom-factor-changed', webFrame.getZoomFactor());
+    }
     return ret;
   };
 })();
