@@ -51,7 +51,9 @@ var docObserver = new MutationObserver(function () {
 
     var buffersObserver = new MutationObserver(function () {
       var selected = getSelectedChannel();
-      if (selectedChannel !== selected) {
+
+      if (selectedChannel !== selected && (!selectedChannel || !selected ||
+          (selectedChannel.getAttribute("href") != selected.getAttribute("href")))) {
         oldSelectedChannel = selectedChannel;
         selectedChannel = selected;
       }
