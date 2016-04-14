@@ -13,5 +13,21 @@ window._zoomActualSize = function() {
 };
 
 window._openChannelPalette = function () {
-  jQuery.event.trigger({ type: 'keydown', which: 75, ctrlKey: true }); // Simulate Ctrl+K
-}
+  jQuery.event.trigger({ type: 'keydown', ctrlKey: true, which: "K".charCodeAt(0) });
+};
+
+window._movePrevChannel = function () {
+  jQuery.event.trigger({ type: 'keydown', altKey: true, which: 38 });
+};
+
+window._moveNextChannel = function () {
+  jQuery.event.trigger({ type: 'keydown', altKey: true, which: 40 });
+};
+
+window._movePrevUnreadChannel = function () {
+  jQuery.event.trigger({ type: 'keydown', altKey: true, shiftKey: true, which: 38 });
+};
+
+window._moveNextUnreadChannel = function () {
+  jQuery.event.trigger({ type: 'keydown', altKey: true, shiftKey: true, which: 40 });
+};

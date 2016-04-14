@@ -389,10 +389,38 @@ function openMainWindow() {
     hideMenuBar(mainWindow);
   }
 
-  var ret = GlobalShortcut.register('ctrl+p', function() {
+  GlobalShortcut.register('Ctrl+P', function() {
     var focusedWindow = BrowserWindow.getFocusedWindow();
     if (focusedWindow && focusedWindow.webContents) {
       focusedWindow.webContents.executeJavaScript('_openChannelPalette()');
+    }
+  });
+
+  GlobalShortcut.register('Ctrl+PageUp', function() {
+    var focusedWindow = BrowserWindow.getFocusedWindow();
+    if (focusedWindow && focusedWindow.webContents) {
+      focusedWindow.webContents.executeJavaScript('_movePrevChannel()');
+    }
+  });
+
+  GlobalShortcut.register('Ctrl+PageDown', function() {
+    var focusedWindow = BrowserWindow.getFocusedWindow();
+    if (focusedWindow && focusedWindow.webContents) {
+      focusedWindow.webContents.executeJavaScript('_moveNextChannel()');
+    }
+  });
+
+  GlobalShortcut.register('Ctrl+Shift+PageUp', function() {
+    var focusedWindow = BrowserWindow.getFocusedWindow();
+    if (focusedWindow && focusedWindow.webContents) {
+      focusedWindow.webContents.executeJavaScript('_movePrevUnreadChannel()');
+    }
+  });
+
+  GlobalShortcut.register('Ctrl+Shift+PageDown', function() {
+    var focusedWindow = BrowserWindow.getFocusedWindow();
+    if (focusedWindow && focusedWindow.webContents) {
+      focusedWindow.webContents.executeJavaScript('_moveNextUnreadChannel()');
     }
   });
 }
