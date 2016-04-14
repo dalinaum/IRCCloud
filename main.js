@@ -5,7 +5,6 @@ var BrowserWindow = require('browser-window');
 var ConfigStore = require('configstore');
 var Menu = require('menu');
 var Shell = require('shell');
-var GlobalShortcut = require('electron').globalShortcut;
 
 require('crash-reporter').start();
 
@@ -316,6 +315,69 @@ App.once('ready', function() {
     ];
   }
 
+  // Add actions as 2nd menu item
+  template.splice(1, 0, {
+    label: 'Actions',
+    submenu: [
+      {
+        label: 'Jump to Channel',
+        accelerator: 'CommandOrControl+P',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_openChannelPalette()');
+          }
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Switch to Previous Channel',
+        accelerator: 'CommandOrControl+PageUp',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_movePrevChannel()');
+          }
+        }
+      },
+      {
+        label: 'Switch to Next Channel',
+        accelerator: 'CommandOrControl+PageDown',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_moveNextChannel()');
+          }
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Switch to Previous Unread Channel',
+        accelerator: 'CommandOrControl+Shift+PageUp',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_movePrevUnreadChannel()');
+          }
+        }
+      },
+      {
+        label: 'Switch to Next Unread Channel',
+        accelerator: 'CommandOrControl+Shift+PageDown',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_moveNextUnreadChannel()');
+          }
+        }
+      }
+    ]
+  });
+
   var menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 });
@@ -388,41 +450,6 @@ function openMainWindow() {
   if (conf.get('menu-bar') === false) {
     hideMenuBar(mainWindow);
   }
-
-  GlobalShortcut.register('Ctrl+P', function() {
-    var focusedWindow = BrowserWindow.getFocusedWindow();
-    if (focusedWindow && focusedWindow.webContents) {
-      focusedWindow.webContents.executeJavaScript('_openChannelPalette()');
-    }
-  });
-
-  GlobalShortcut.register('Ctrl+PageUp', function() {
-    var focusedWindow = BrowserWindow.getFocusedWindow();
-    if (focusedWindow && focusedWindow.webContents) {
-      focusedWindow.webContents.executeJavaScript('_movePrevChannel()');
-    }
-  });
-
-  GlobalShortcut.register('Ctrl+PageDown', function() {
-    var focusedWindow = BrowserWindow.getFocusedWindow();
-    if (focusedWindow && focusedWindow.webContents) {
-      focusedWindow.webContents.executeJavaScript('_moveNextChannel()');
-    }
-  });
-
-  GlobalShortcut.register('Ctrl+Shift+PageUp', function() {
-    var focusedWindow = BrowserWindow.getFocusedWindow();
-    if (focusedWindow && focusedWindow.webContents) {
-      focusedWindow.webContents.executeJavaScript('_movePrevUnreadChannel()');
-    }
-  });
-
-  GlobalShortcut.register('Ctrl+Shift+PageDown', function() {
-    var focusedWindow = BrowserWindow.getFocusedWindow();
-    if (focusedWindow && focusedWindow.webContents) {
-      focusedWindow.webContents.executeJavaScript('_moveNextUnreadChannel()');
-    }
-  });
 }
 
 App.on('activate-with-no-open-windows', function () {
