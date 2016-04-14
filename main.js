@@ -374,6 +374,19 @@ App.once('ready', function() {
             focusedWindow.webContents.executeJavaScript('_moveNextUnreadChannel()');
           }
         }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Switch to Previously Selected Channel',
+        accelerator: 'CommandOrControl+Tab',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_movePreviouslySelectedChannel()');
+          }
+        }
       }
     ]
   });
