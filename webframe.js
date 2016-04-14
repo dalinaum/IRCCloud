@@ -31,3 +31,34 @@ window._movePrevUnreadChannel = function () {
 window._moveNextUnreadChannel = function () {
   jQuery.event.trigger({ type: 'keydown', altKey: true, shiftKey: true, which: 40 });
 };
+
+window._movePreviouslySelectedChannel = function () {
+  if (oldSelectedChannel !== null)
+    oldSelectedChannel.click();
+};
+
+function getSelectedChannel () {
+  return document.querySelector("#buffers .buffer.selected span[href]")
+}
+
+var selectedChannel = null;
+var oldSelectedChannel = null;
+
+var docObserver = new MutationObserver(function () {
+  var buffers = document.querySelector("#buffers");
+  if (buffers !== null) {
+    docObserver.disconnect();
+
+    var buffersObserver = new MutationObserver(function () {
+      var selected = getSelectedChannel();
+      if (selectedChannel !== selected) {
+        oldSelectedChannel = selectedChannel;
+        selectedChannel = selected;
+      }
+    });
+
+    buffersObserver.observe(buffers, { attributes: true, attributeFilter: ['class', 'href'], subtree: true });
+  }
+});
+
+docObserver.observe(document, {subtree: true, attributes: true, childList: true, attributeFilter: ['id'] });
