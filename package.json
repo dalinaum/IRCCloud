@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "configstore": "^1.4.0",
-    "electron-packager": "^5.2.0",
+    "electron-packager": "^15.0.0",
     "electron-prebuilt": "^0.36.2",
     "grunt-electron": "^2.0.1"
   }
