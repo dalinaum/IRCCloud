@@ -3,7 +3,7 @@
   "name": "IRCCloud",
   "version": "0.9.0",
   "description": "An unofficial cross-platform IRCCloud app.",
-  "keywords": ["IRCCloud, electron"],
+  "keywords": ["IRCCloud", "electron"],
   "repository": {
     "type": "git",
     "url": "https://github.com/dalinaum/IRCCloud.git"
