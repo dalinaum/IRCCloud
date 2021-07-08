@@ -315,6 +315,82 @@ App.once('ready', function() {
     ];
   }
 
+  // Add actions as 2nd menu item
+  template.splice(1, 0, {
+    label: 'Actions',
+    submenu: [
+      {
+        label: 'Jump to Channel',
+        accelerator: 'CommandOrControl+P',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_openChannelPalette()');
+          }
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Switch to Previous Channel',
+        accelerator: 'CommandOrControl+PageUp',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_movePrevChannel()');
+          }
+        }
+      },
+      {
+        label: 'Switch to Next Channel',
+        accelerator: 'CommandOrControl+PageDown',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_moveNextChannel()');
+          }
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Switch to Previous Unread Channel',
+        accelerator: 'CommandOrControl+Shift+PageUp',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_movePrevUnreadChannel()');
+          }
+        }
+      },
+      {
+        label: 'Switch to Next Unread Channel',
+        accelerator: 'CommandOrControl+Shift+PageDown',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_moveNextUnreadChannel()');
+          }
+        }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Switch to Previously Selected Channel',
+        accelerator: 'CommandOrControl+Tab',
+        click: function() {
+          var focusedWindow = BrowserWindow.getFocusedWindow();
+          if (focusedWindow && focusedWindow.webContents) {
+            focusedWindow.webContents.executeJavaScript('_movePreviouslySelectedChannel()');
+          }
+        }
+      }
+    ]
+  });
+
   var menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 });
